@@ -54,6 +54,12 @@ mapapp.createFunctions = function(){
       text += '<tr><td>'+key+'</td><td>'+details[key]+'</td></tr>';
     }
     text += '</table>';
+  //--------WIP 1 ---------------------------------------------------------------------------------------------------------------------------------
+  //
+  //trigger a bootstrap modal
+  //
+  //
+  
   }
   
   //helper functions
