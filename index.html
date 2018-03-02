@@ -51,7 +51,26 @@ required codes are in the project.map.js file
     //mapapp.setApiURL(URL to ARI folder)
     mapapp.updateData(gjson);
     
-    mapapp.loadShapefile("test.zip");
+    //this is demo of loading a shape file
+    //users should zip the shapefile bundle before selecting
+    //THIS WILL NOT UPLOAD THE SHAPEFILE!!! It will just load 
+    //it in the current map
+    //mapapp.loadShapefile("test.zip"); 
+    
+    //to test if shape file is completely loaded check the boolean
+    mapapp.isShapefileLoaded
+    
+    //to provice a callback function to call when shapefile is loaded
+    //provide the function as an additional argument
+    mapapp.loadShapefile("test.zip", function(){
+      //to get a geoJSON to upload it to server
+      //will return false if shape file is not loaded
+      console.log(mapapp.getGeoJSONofShape());      
+    }); 
+    
+    //to remove the shapefile (if required) simply do
+    //mapapp.removeShapefile();
+    
   </script>
 </body>
 </html>

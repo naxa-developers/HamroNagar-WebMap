@@ -9,6 +9,7 @@ mapapp.createConstants = function(){
 //setup variables and getters and setters for the map
 mapapp.setupVariables = function(){
   mapapp._apiBaseURL = "";
+  mapapp.isShapefileLoaded = false;
   mapapp.setApiURL = function (URL){
     mapapp._apiBaseURL = URL;
   }
@@ -71,15 +72,26 @@ mapapp.createFunctions = function(){
   
   //function to load the supplied shapefile into the map. The shapefile and its
   //necessary supplementary files need to be bundled in a zip file
-  mapapp.loadShapefile = function(zipfile){
-    mapapp.shpfile = new L.Shapefile(zipfile,{onEachFeature: function (feature, layer) {
-      console.log(feature);
-    }});
+  mapapp.loadShapefile = function(zipfile, callback){
+    mapapp.isShapefileLoaded = false;
+    mapapp.shpfile = new L.Shapefile(zipfile);
     mapapp.shpfile.once('data:loaded', function(){
-      console.log('dataloaded');
+      mapapp.isShapefileLoaded = true;
+      if (callback) callback();  
     });
     mapapp.shpfile.addTo(mapapp.map);
-    console.log(mapapp.shpfile.toGeoJSON());
+    
+  }
+  //function to remove current shapefile
+  mapapp.removeShapefile = function(){
+    mapapp.isShapefileloaded = false;
+    mapapp.map.removeLayer(mapapp.shpfile);
+    mapapp.shpfile = '';
+  }
+  //get geojson of shapefile
+  mapapp.getGeoJSONofShape = function(){
+    if (mapapp.isShapefileLoaded) return mapapp.shpfile.toGeoJSON();
+    else return false;
   }
   
   //helper functions
