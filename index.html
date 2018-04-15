@@ -44,12 +44,19 @@ required codes are in the project.map.js file
       "properties": {
         "title": "Dinagat Islands",
         "summary": "native land of night owls ... ",
-        "id":123
+        "id":123,
+        "key1": "value 1",
+        "key2": "value 3",
+        "key3": "value 4",
+        "key4": "value 5"
       }
     };
     //setup parameters
     //mapapp.setApiURL(URL to ARI folder)
     mapapp.updateData(gjson);
+    
+    //set up the URL to fetch details, will pass the feature id to the api
+    mapapp.setApiURL('./apis/');
     
     //this is demo of loading a shape file
     //users should zip the shapefile bundle before selecting

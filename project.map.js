@@ -30,7 +30,7 @@ mapapp.createFunctions = function(){
     //create a details modal
     var modaltxt = '<div class="modal" id="detail-modal" tabindex="-1" role="dialog"><div class="modal-dialog" role="document"><div class="modal-content">';
     modaltxt += '<div class="modal-header">';
-    modaltxt += '<h5 class="modal-title" id="detail-modal-title"></h5>';
+    modaltxt += '<h5 class="modal-title" id="detail-modal-title" style="float:left"></h5>';
     modaltxt += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
     modaltxt += '</div>';
     modaltxt += '<div class="modal-body" id="detail-modal-body"></div>';
@@ -63,7 +63,7 @@ mapapp.createFunctions = function(){
     delete details.summary;
     text += '<table>';
     for(var key in details){
-      text += '<tr><td>'+key+'</td><td>'+details[key]+'</td></tr>';
+      text += '<tr><td style="padding:5px;background:#fdfdfd">'+key+'</td><td style="padding:5px;background:#f1f1f1">'+details[key]+'</td></tr>';
     }
     text += '</table>';
     $('#detail-modal-body').html(text);
